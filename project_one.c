@@ -1,5 +1,5 @@
 /* Author: Larry John & 
-    drone_fleet.c */
+    project_one.c */
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
