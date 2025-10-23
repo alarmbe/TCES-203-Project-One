@@ -10,6 +10,7 @@
 void addDrone(int a[], char b[][MAX_LEN], float c[], float d[][2]);
 bool strCompare(char str1[], char str2[]);
 void displayDrones(int a[], char b[][MAX_LEN], float c[], float d[][2]);
+void calculateAverageBattery(int batteries[]);
 
 void addDrone(int ids[], char models[][MAX_LEN], float batteries[], float positions[][2])
 {
@@ -102,13 +103,16 @@ while(game_on == true)
     choice = 0;
 
     printf("Please choose an option: \n");
-    printf("1. Add drone\n2. Display drones\n3. Exit\n");
+    printf("1. Add drone\n2. Display drones\n3. Calculate battery average\n4. Exit");
     scanf("%d", &choice);
 
-    if(choice == 3)
+    if(choice == 4)
     {
         printf("Exiting program...");
         game_on = false;
+    } else if(choice == 3)
+    {
+        calculateAverageBattery(batteries);
     }else if(choice == 1)
     {
         printf("Adding drone...\n");
@@ -193,5 +197,35 @@ for(int i = 0; i < MAX_SIZE; i++)
 }
 
 printf("\n");
+
+}
+// A method for calcualting the average battery level
+void calculateAverageBattery(float batteries[])
+{
+
+    float average = 0.0;
+
+    // Check if there are any batteries at all
+    if(batteries[0] == 200.0)
+    {
+        printf("No drones available.");
+    }  else{
+
+        for(int i = 0; i < MAX_SIZE; i++)
+        {
+
+            if(batteries[i] == 200.0)
+            {
+                average += batteries[i];
+                continue;
+            } else{
+                break;
+            }
+
+        }
+
+        printf("The average battery level: %.2f", average);
+
+    }
 
 }
